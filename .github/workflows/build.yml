@@ -19,54 +19,22 @@ jobs:
       uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.PAT_FOR_LABELS }}
-        script:
-            if (!context.payload.pull_request) {
-                console.log('Not a pull request, skipping label script routine');
-                return;
-              }
+        script: |
+          if (!context.payload.pull_request) {
+              console.log('Not a pull request, skipping label script routine');
+              return;
+          }
 
           const prefixes = [
-            'INFRA:',
-            'PROVISIONS:',
-            'RELEASES:',
-            'DATA:',
-            'BROKERS:',
-            'FOUNDATIONS:',
-            'PROCESSINGS:',
-            'ORCHESTRATIONS:',
-            'COORDINATIONS:',
-            'MANAGEMENTS:',
-            'AGGREGATIONS:',
-            'CONTROLLERS:',
-            'CLIENTS:',
-            'EXPOSERS:',
-            'PROVIDERS:',
-            'BASE:',
-            'COMPONENTS:',
-            'VIEWS:',
-            'PAGES:',
-            'ACCEPTANCE:',
-            'INTEGRATIONS:',
-            'CODE RUB:',
-            'MINOR FIX:',
-            'MEDIUM FIX:',
-            'MAJOR FIX:',
-            'DOCUMENTATION:',
-            'CONFIG:',
-            'STANDARD:',
-            'DESIGN:',
-            'BUSINESS:'
+            'INFRA:', 'PROVISIONS:', 'RELEASES:', 'DATA:', 'BROKERS:', 'FOUNDATIONS:', 'PROCESSINGS:', 'ORCHESTRATIONS:', 'COORDINATIONS:', 'MANAGEMENTS:', 'AGGREGATIONS:', 'CONTROLLERS:', 'CLIENTS:', 'EXPOSERS:', 'PROVIDERS:', 'BASE:', 'COMPONENTS:', 'VIEWS:', 'PAGES:', 'ACCEPTANCE:', 'INTEGRATIONS:', 'CODE RUB:', 'MINOR FIX:', 'MEDIUM FIX:', 'MAJOR FIX:', 'DOCUMENTATION:', 'CONFIG:', 'STANDARD:', 'DESIGN:', 'BUSINESS:'
           ];
 
-
           const title = context.payload.pull_request.title;
-
           const existingLabels = context.payload.pull_request.labels.map(label => label.name);
-
 
           for (const prefix of prefixes) {
             if (title.startsWith(prefix)) {
-              const label = prefix.slice(0, -1);
+              const label = prefix.slice(0, -1); // Remove the last character (colon)
               if (!existingLabels.includes(label)) {
                 console.log(`Applying label: ${label}`);
                 await github.rest.issues.addLabels({

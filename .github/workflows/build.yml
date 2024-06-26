@@ -18,8 +18,8 @@ jobs:
     - name: Apply Label
       uses: actions/github-script@v6
       with:
-        github_token: ${{ secrets.PAT_FOR_LABELS }}
-        script: >2
+        github-token: ${{ secrets.PAT_FOR_LABELS }}
+        script:
             if (!context.payload.pull_request) {
                 console.log('Not a pull request, skipping label script routine');
                 return;

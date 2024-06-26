@@ -18,7 +18,7 @@ jobs:
     - name: Apply Label
       uses: actions/github-script@v6
       with:
-        github-token: ${{ PAT_FOR_TAGGING }}
+        github-token: ${{ secrets.PAT_FOR_TAGGING }}
         script: >2
             if (!context.payload.pull_request) {
                 console.log('Not a pull request, skipping label script routine');

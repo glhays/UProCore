@@ -6,6 +6,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UPro.Core.Api.Storages;
 
 namespace UPro.Core.Api
 {
@@ -18,6 +19,11 @@ namespace UPro.Core.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<StorageBroker>();
+
+            builder.Services.AddTransient<
+                IStorageBroker,
+                StorageBroker>();
 
             var app = builder.Build();
 

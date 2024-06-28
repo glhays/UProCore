@@ -7,7 +7,7 @@ using EFxceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace UPro.Core.Api.Storages
+namespace UPro.Core.Api.Brokers.Storages
 {
     internal partial class StorageBroker : EFxceptionsContext, IStorageBroker
     {
@@ -16,13 +16,13 @@ namespace UPro.Core.Api.Storages
         public StorageBroker(IConfiguration configuration)
         {
             this.configuration = configuration;
-            this.Database.Migrate();
+            Database.Migrate();
         }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
-            this.configuration.GetConnectionString("UProDbConnection");
+            configuration.GetConnectionString("UProDbConnection");
         }
     }
 }

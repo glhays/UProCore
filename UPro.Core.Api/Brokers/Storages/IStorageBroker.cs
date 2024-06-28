@@ -3,8 +3,8 @@
 // This source code is subject to terms and conditions set forth by UProCore
 // ----------------------------------------------------------------------------------
 
-namespace UPro.Core.Api.Storages
+namespace UPro.Core.Api.Brokers.Storages
 {
     internal partial interface IStorageBroker
-    {}
+    { }
 }

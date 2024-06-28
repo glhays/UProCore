@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UPro.Core.Api.Brokers.DateTimes;
-using UPro.Core.Api.Storages;
+using UPro.Core.Api.Brokers.Storages;
 
 namespace UPro.Core.Api
 {

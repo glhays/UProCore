@@ -14,5 +14,6 @@ namespace UPro.Core.Api.Brokers.Loggings
         void LogCritical(Exception exception);
         void LogWarning(string message);
         void LogError(Exception exception);
+        void LogTrace(string message);
     }
 }

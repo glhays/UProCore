@@ -8,5 +8,6 @@ namespace UPro.Core.Api.Brokers.Loggings
     public interface ILoggingBroker
     {
         void LogDebug(string message);
+        void LogInformation(string message);
     }
 }

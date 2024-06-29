@@ -13,5 +13,8 @@ namespace UPro.Core.Api.Brokers.Loggings
 
         public void LogDebug(string message)=>
             this.logger.LogDebug(message);
+
+        public void LogInformation(string message) =>
+            this.logger.LogInformation(message);
     }
 }

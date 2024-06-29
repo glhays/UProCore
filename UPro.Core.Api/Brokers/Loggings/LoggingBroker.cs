@@ -20,5 +20,8 @@ namespace UPro.Core.Api.Brokers.Loggings
         
         public void LogCritical(Exception exception) =>
             this.logger.LogCritical(exception, exception.Message);
+
+        public void LogWarning(string message) =>
+            this.logger.LogWarning(message);
     }
 }

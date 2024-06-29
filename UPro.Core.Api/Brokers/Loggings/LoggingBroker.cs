@@ -3,6 +3,7 @@
 // This source code is subject to terms and conditions set forth by UProCore
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Extensions.Logging;
 
 namespace UPro.Core.Api.Brokers.Loggings
@@ -16,5 +17,8 @@ namespace UPro.Core.Api.Brokers.Loggings
 
         public void LogInformation(string message) =>
             this.logger.LogInformation(message);
+        
+        public void LogCritical(Exception exception) =>
+            this.logger.LogCritical(exception, exception.Message);
     }
 }

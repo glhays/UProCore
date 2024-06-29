@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UPro.Core.Api.Brokers.DateTimes;
+using UPro.Core.Api.Brokers.Loggings;
 using UPro.Core.Api.Brokers.Storages;
 
 namespace UPro.Core.Api
@@ -25,6 +26,10 @@ namespace UPro.Core.Api
             builder.Services.AddTransient<
                 IStorageBroker,
                 StorageBroker>();
+
+            builder.Services.AddTransient<
+                ILoggingBroker,
+                LoggingBroker>();
 
             builder.Services.AddTransient<
                 IDateTimeBroker,

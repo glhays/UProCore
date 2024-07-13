@@ -22,7 +22,10 @@ namespace UPro.Core.Api.Brokers.Storages
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
-            configuration.GetConnectionString("UProDbConnection");
+            string connectionString = 
+                this.configuration.GetConnectionString(name: "UProDbConnection");
+
+            optionsBuilder.UseSqlServer(connectionString);
         }
     }
 }

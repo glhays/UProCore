@@ -3,6 +3,7 @@
 // This source code is subject to terms and conditions set forth by UProCore
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using EFxceptions;
@@ -38,6 +39,8 @@ namespace UPro.Core.Api.Brokers.Storages
 
             return entity;
         }
+
+        private IQueryable<T> SelectAll<T>() where T : class => this.Set<T>();
 
         private void DetachSavedEntity<T>(T @object)
         {

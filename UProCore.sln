@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPro.Core.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPro.Core.Api.Tests.Unit", "UPro.Core.Api.Tests.Unit\UPro.Core.Api.Tests.Unit.csproj", "{531A74B7-FD6B-4425-9498-698D92A0FE6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPro.Core.Api.Tests.Acceptance", "UPro.Core.Api.Tests.Acceptance\UPro.Core.Api.Tests.Acceptance.csproj", "{E7DBDAD5-2110-4CAF-8191-17C8811AC301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPro.Core.Api.Tests.Acceptance", "UPro.Core.Api.Tests.Acceptance\UPro.Core.Api.Tests.Acceptance.csproj", "{E7DBDAD5-2110-4CAF-8191-17C8811AC301}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1879BA2D-69E8-4DC9-BCC0-A3A1DDCD7A79}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

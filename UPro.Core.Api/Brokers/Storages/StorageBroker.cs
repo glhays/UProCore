@@ -4,31 +4,42 @@
 // ----------------------------------------------------------------------------------
 
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using EFxceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using UPro.Core.Api.Models.Settings;
 
 namespace UPro.Core.Api.Brokers.Storages
 {
-    internal partial class StorageBroker : EFxceptionsContext, IStorageBroker
+    public partial class StorageBroker : EFxceptionsContext, IStorageBroker
     {
         private readonly IConfiguration configuration;
 
         public StorageBroker(IConfiguration configuration)
         {
             this.configuration = configuration;
-            Database.Migrate();
+            //Database.Migrate();
         }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = 
+            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+
+            string connectionString =
                 this.configuration.GetConnectionString(name: "UProDbConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CompanyProfile>().ToTable("CompanyProfiles", "Settings");
+            modelBuilder.Entity<CompanyProfileDefault>().ToTable("CompanyProfileDefaults", "Settings");
+
+            AddSettingsCompanyProfileConfigurations(modelBuilder.Entity<CompanyProfile>());
+            AddSettingsCompanyProfileDefaultConfigurations(modelBuilder.Entity<CompanyProfileDefault>());
         }
 
         private async ValueTask<T> InsertAsync<T>(T entity)
